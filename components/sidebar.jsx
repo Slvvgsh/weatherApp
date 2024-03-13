@@ -1,6 +1,10 @@
 import Image from "next/image";
 import WeatherSvg from "@/public/data";
+const toSentenceCase = (str) => {
+  if (!str) return '';
 
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
 export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,searchInput,handleInputChange,loading,currentDateTime}) {
 
   return (
@@ -43,11 +47,14 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
           </div>
         </div> )}
         {!loading && (<div className="flex flex-col gap-4 items-center justify-center w-full">
+        <div className="flex ">
+          <h1 className="text-3xl text-cyan-100">{toSentenceCase(weather.weather[0].description)}</h1>
+          </div>
           <h1 className="text-2xl gap-3 text-cyan-100">
-            {currentDateTime}
+            {currentDateTime.split(",")[0] + " " + currentDateTime.split(",")[1]}
           </h1>
           <div className="relative w-full">
-            <hr className="my-10 border-t-4 border-cyan-100" />
+            <hr className="my-2 border-t-4 border-cyan-100" />
             <Image
               className="mix-blend-overlay w-full rounded-lg h-[295px]"
               src={City_Image.urls.full}
@@ -56,7 +63,7 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
               width="500"
             />
             <h3 className="text-3xl absolute bottom-0 right-0 p-4 text-gray-300">
-              {weather.name} , {weather.sys.country}
+              {weather.name} {weather.sys.country}
             </h3>
           </div>
         </div>)}

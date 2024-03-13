@@ -1,8 +1,6 @@
 export function Thunderstorm() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +29,6 @@ export function Thunderstorm() {
 export function Drizzle_rain() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +50,6 @@ export function Drizzle_rain() {
 export function HeavyRain() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +70,6 @@ export function HeavyRain() {
 export function HeavySnow() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -110,8 +102,6 @@ export function HeavySnow() {
 export function Mist() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -133,8 +123,6 @@ export function Mist() {
 export function ClearSky() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -177,8 +165,6 @@ export function ClearSky() {
 export function CLoudyFewClouds() {
   return (
     <svg
-      width="192"
-      height="192"
       viewBox="0 0 192 192"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
