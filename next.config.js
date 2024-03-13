@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   assetPrefix: "/",
-  // output:'export',
+  output:'export',
   images:{
     unoptimized: true,
     domains: [
@@ -10,4 +10,4 @@ const nextConfig = {
     ],
   },
 };
-export default nextConfig;
+module.exports=nextConfig
