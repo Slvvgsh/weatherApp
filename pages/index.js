@@ -299,6 +299,7 @@ export default function Home() {
                   key={index}
                   className="p-2  text-white/80 font-semibold text-backdrop-blur-xl rounded-3xl backdrop-blur-xl flex flex-col items-center justify-evenly bg-black/20"
                 >
+                
                   <h1>{weekdata.date}</h1>
                   <div className="h-14 w-14">
                     <WeatherSvg id={weekdata.id} />
