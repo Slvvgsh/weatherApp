@@ -1,4 +1,4 @@
-/* @type {import('next').NextConfig} 
+/*@type {import('next').NextConfig}*/ 
 const nextConfig = {
   reactStrictMode: true,
   assetPrefix: "/",
@@ -11,17 +11,4 @@ const nextConfig = {
   },
 };
 module.exports=nextConfig
-*/
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  assetPrefix: "/",
-  images: {
-    unoptimized: true,
-    domains: [
-      "images.unsplash.com"
-    ],
-  },
-};
-module.exports = nextConfig;
