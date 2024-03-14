@@ -315,7 +315,7 @@ export default function Home() {
             <div className="h-[6%] flex items-center text-backdrop-blur-xl text-2xl font-semibold text-black/30 w-full">
               Weekly Forecast
             </div>
-            <div className="w-full h-[110%] sm:h-[70%] md:h-[35%] xl:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4">
+            <div className="w-full h-[110%] sm:h-[65%] md:h-[37%] xl:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4">
               {Weeklyforecast.map((weekdata, index) => (
                 <div
                   key={index}
