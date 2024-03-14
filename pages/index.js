@@ -249,11 +249,13 @@ export default function Home() {
     <>
       <div className="inset-0 fixed h-screen w-screen -z-10">
         <img
-          src={`/${Weatherbg(
-            weather.weather !== undefined &&
-              weather.weather.length > 0 &&
-              weather.weather[0].id
-          )}`}
+        src = "/HeavyRain-video.svg"
+
+          // src={`/${Weatherbg(
+          //   weather.weather !== undefined &&
+          //     weather.weather.length > 0 &&
+          //     weather.weather[0].id
+          // )}`}
           alt="bg"
           className="h-full w-full"
         />
