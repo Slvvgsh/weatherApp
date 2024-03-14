@@ -4,6 +4,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import WeatherSvg from "@/public/data";
+import heavyrain from "../public/HeavyRain-video.svg"
 import { Weatherbg } from "@/public/data";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -249,7 +250,7 @@ export default function Home() {
     <>
       <div className="inset-0 fixed h-screen w-screen -z-10">
         <Image
-        src = "/cloudy_video.svg"
+        src = {heavyrain}
           height={0}
           width={0}
           // src={`/${Weatherbg(
