@@ -5,6 +5,7 @@ const nextConfig = {
   output:'export',
   images:{
     unoptimized: true,
+    formats:["image/svg"],
     domains: [
       "images.unsplash.com"
     ],
