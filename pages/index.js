@@ -298,8 +298,8 @@ export default function Home() {
         )})] bg-cover bg-no-repeat`}
       > */}
       <div></div>
-      <div className="w-screen flex lg:flex-row flex-col gap-4 p-4 h-screen">
-        <div className="lg:w-[37.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
+      <div className="w-screen flex xl:flex-row flex-col gap-4 p-4 h-screen">
+        <div className="xl:w-[37.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
           <SideBar
             getCurrentWeatherOnSearch={getCurrentWeatherOnSearch}
             weather={weather}
@@ -310,12 +310,12 @@ export default function Home() {
             currentDateTime={currentDateTime}
           />
         </div>
-        <main className="flex lg:w-[62.5%] w-full h-full">
+        <main className="flex pb-20 xl:w-[62.5%] w-full h-full">
           <main className="w-full h-full space-y-4">
-            <div className="h-[8%] flex items-center text-backdrop-blur-xl text-2xl font-semibold text-black/30 w-full">
+            <div className="h-[6%] flex items-center text-backdrop-blur-xl text-2xl font-semibold text-black/30 w-full">
               Weekly Forecast
             </div>
-            <div className="w-full h-[60%] sm:h-[29%] md:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4">
+            <div className="w-full h-[110%] sm:h-[70%] md:h-[35%] xl:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4">
               {Weeklyforecast.map((weekdata, index) => (
                 <div
                   key={index}
@@ -330,10 +330,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <h2 className="text-backdrop-blur-xl h-[8%] flex items-center text-2xl font-semibold text-black/30 w-full">
+            <h2 className="text-backdrop-blur-xl flex items-center text-2xl font-semibold text-black/30 w-full">
               Current Weather
             </h2>
-            <div className="grid h-[55%] xl:grid-cols-3 md:grid-cols-2 md:grid-rows-3 gap-8 xl:grid-rows-2">
+            <div className="grid h-[55%] md:h-[89%] xl:h-[70%] md:text-sm xl:grid-cols-3 md:grid-cols-2 md:grid-rows-3 gap-8 xl:grid-rows-2">
               <div className="p-2  text-white/80 font-semibold text-backdrop-blur-xl rounded-3xl backdrop-blur-xl flex flex-col items-center justify-evenly bg-black/20">
                 <h1 className="py-2 text-2xl font-normal flex justify-center">
                   Air Quality

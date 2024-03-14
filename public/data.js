@@ -1,13 +1,23 @@
 import Image from "next/image";
 import next from "./clear-day.svg";
-import {Thunderstorm, Drizzle_rain, HeavyRain, HeavySnow, Mist, ClearSky, CLoudyFewClouds } from "@/components/svg";
+import {
+  Thunderstorm,
+  Drizzle_rain,
+  HeavyRain,
+  HeavySnow,
+  Mist,
+  ClearSky,
+  CLoudyFewClouds,
+} from "@/components/svg";
 
 export default function WeatherSvg({ id }) {
   switch (id) {
     //200,201,202,210,212,221,230,231,232 Thunderstorm
     case 200:
+    case 201:
     case 202:
     case 210:
+    case 211:
     case 212:
     case 221:
     case 230:
@@ -35,7 +45,7 @@ export default function WeatherSvg({ id }) {
     case 502:
     case 503:
     case 504:
-        return <HeavyRain />;
+      return <HeavyRain />;
     //511,600,601,602,611,612,613,615,616,620,621,622
     case 511:
     case 600:
@@ -49,7 +59,7 @@ export default function WeatherSvg({ id }) {
     case 620:
     case 621:
     case 622:
-        return <HeavySnow/>;
+      return <HeavySnow />;
     //701,711,721,731,741,751,761,762,771,781
     case 701:
     case 711:
@@ -61,26 +71,28 @@ export default function WeatherSvg({ id }) {
     case 762:
     case 771:
     case 781:
-        return <Mist/>
+      return <Mist />;
     case 800:
-        return <ClearSky/>
+      return <ClearSky />;
     case 801:
     case 802:
     case 803:
     case 804:
-        return <CLoudyFewClouds/>
+      return <CLoudyFewClouds />;
     default:
       break;
   }
 }
 
-export const Weatherbg= (id)=>{
-  console.log(id)
+export const Weatherbg = (id) => {
+  console.log(id);
   switch (id) {
     //200,201,202,210,212,221,230,231,232 Thunderstorm
     case 200:
+    case 201:
     case 202:
     case 210:
+    case 211:
     case 212:
     case 221:
     case 230:
@@ -108,7 +120,7 @@ export const Weatherbg= (id)=>{
     case 502:
     case 503:
     case 504:
-        return "heavyrain";
+      return "heavyrain";
     //511,600,601,602,611,612,613,615,616,620,621,622
     case 511:
     case 600:
@@ -122,7 +134,7 @@ export const Weatherbg= (id)=>{
     case 620:
     case 621:
     case 622:
-        return "snowvideo";
+      return "snowvideo";
     //701,711,721,731,741,751,761,762,771,781
     case 701:
     case 711:
@@ -134,16 +146,15 @@ export const Weatherbg= (id)=>{
     case 762:
     case 771:
     case 781:
-        return "Mistvideo"
+      return "Mistvideo";
     case 800:
-        return "Clearskyvideo"
+      return "Clearskyvideo";
     case 801:
     case 802:
     case 803:
     case 804:
-        return "Cloudyvideo"
+      return "Cloudyvideo";
     default:
       break;
   }
-  
-}
+};

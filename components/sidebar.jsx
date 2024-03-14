@@ -33,7 +33,7 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
           </svg>
           </button>
         </form>
-        {!loading && (<div className="w-full flex sm:flex-row flex-col justify-between items-center">
+        {!loading && (<div className="w-full flex sm:flex-row flex-col justify-between sm:justify-center items-center">
           {" "}
           <div className=" h-56 w-56">
             <WeatherSvg id={weather.weather[0].id}/>
