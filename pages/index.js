@@ -248,9 +248,10 @@ export default function Home() {
   return (
     <>
       <div className="inset-0 fixed h-screen w-screen -z-10">
-        <img
-        src = "/HeavyRain-video.svg"
-
+        <Image
+        src = "/cloudy_video.svg"
+          height={0}
+          width={0}
           // src={`/${Weatherbg(
           //   weather.weather !== undefined &&
           //     weather.weather.length > 0 &&
