@@ -86,7 +86,7 @@ export const Weatherbg= (id)=>{
     case 230:
     case 231:
     case 232:
-      return "HeavyRain-video.svg";
+      return "heavyrain";
     //300,301,302,310,311,312,313,314,321,520,521,522,531 Drizzle and Rain
     case 300:
     case 301:
@@ -101,14 +101,14 @@ export const Weatherbg= (id)=>{
     case 521:
     case 522:
     case 531:
-      return "Drizzle_rain.svg";
+      return "Drizzlerain";
     //500,501,502,503,504 Light rain to heavy rain
     case 500:
     case 501:
     case 502:
     case 503:
     case 504:
-        return "HeavyRain-video.svg";
+        return "heavyrain";
     //511,600,601,602,611,612,613,615,616,620,621,622
     case 511:
     case 600:
@@ -122,7 +122,7 @@ export const Weatherbg= (id)=>{
     case 620:
     case 621:
     case 622:
-        return "snow_video.svg";
+        return "snowvideo";
     //701,711,721,731,741,751,761,762,771,781
     case 701:
     case 711:
@@ -134,14 +134,14 @@ export const Weatherbg= (id)=>{
     case 762:
     case 771:
     case 781:
-        return "Mist.svg"
+        return "Mistvideo"
     case 800:
-        return "Clear-sky.svg"
+        return "Clearskyvideo"
     case 801:
     case 802:
     case 803:
     case 804:
-        return "cloudy_video.svg"
+        return "Cloudyvideo"
     default:
       break;
   }

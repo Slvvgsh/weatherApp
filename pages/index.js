@@ -4,8 +4,22 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import WeatherSvg from "@/public/data";
-import heavyrain from "../public/HeavyRain-video.svg"
+import heavyrain from "../public/HeavyRain-video.svg";
+import Drizzlerain from "../public/Drizzle_rain.svg"
+import Clearskyvideo from "../public/Clear-sky.svg"
+import Mistvideo from "../public/Mist.svg"
+import Cloudyvideo from "../public/cloudy_video.svg"
+import snowvideo from "../public/snow_video.svg"
 import { Weatherbg } from "@/public/data";
+
+const bg = {
+  heavyrain:heavyrain,
+  Drizzlerain:Drizzlerain,
+  Clearskyvideo:Clearskyvideo,
+  Mistvideo:Mistvideo,
+  Cloudyvideo:Cloudyvideo,
+  snowvideo:snowvideo,
+}
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -250,7 +264,11 @@ export default function Home() {
     <>
       <div className="inset-0 fixed h-screen w-screen -z-10">
         <Image
-        src = {heavyrain}
+        src = {bg[Weatherbg(
+            weather.weather !== undefined &&
+              weather.weather.length > 0 &&
+              weather.weather[0].id
+          )]}
           height={0}
           width={0}
           // src={`/${Weatherbg(
