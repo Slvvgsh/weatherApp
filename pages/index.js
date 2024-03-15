@@ -11,6 +11,11 @@ import Mistvideo from "../public/Mist.svg"
 import Cloudyvideo from "../public/cloudy_video.svg"
 import snowvideo from "../public/snow_video.svg"
 import { Weatherbg } from "@/public/data";
+const toSentenceCase = (str) => {
+  if (!str) return '';
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
 
 const bg = {
   heavyrain:heavyrain,
@@ -215,6 +220,7 @@ export default function Home() {
       });
       setWeeklyforecast(dateToWeatherIdMap);
     } catch (err) {
+      alert (toSentenceCase(err.response.data.message))
       console.log(err);
     }
   };
@@ -251,7 +257,7 @@ export default function Home() {
         },
         (error) => {
           console.error("Error getting location:", error);
-          alert('Error getting location')
+          alert('Error getting location - Please turn on the location or Provide location access to the web browser')
         },
         { timeout: 10000 }
       );
@@ -315,7 +321,7 @@ export default function Home() {
             <div className="h-[6%] flex items-center text-backdrop-blur-xl text-2xl font-semibold text-black/30 w-full">
               Weekly Forecast
             </div>
-            <div className="w-full h-[128%] sm:h-[65%] md:h-[37%] xl:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 gap-4">
+            <div className="w-full h-[90%] sm:h-[65%] md:h-[37%] xl:h-[20%] grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-3 grid-cols-2 gap-4">
               {Weeklyforecast.map((weekdata, index) => (
                 <div
                   key={index}
