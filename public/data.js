@@ -85,7 +85,6 @@ export default function WeatherSvg({ id }) {
 }
 
 export const Weatherbg = (id) => {
-  console.log(id);
   switch (id) {
     //200,201,202,210,212,221,230,231,232 Thunderstorm
     case 200:

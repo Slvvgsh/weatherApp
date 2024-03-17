@@ -5,26 +5,28 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import WeatherSvg from "@/public/data";
 import heavyrain from "../public/HeavyRain-video.svg";
-import Drizzlerain from "../public/Drizzle_rain.svg"
-import Clearskyvideo from "../public/Clear-sky.svg"
-import Mistvideo from "../public/Mist.svg"
-import Cloudyvideo from "../public/cloudy_video.svg"
-import snowvideo from "../public/snow_video.svg"
+import Drizzlerain from "../public/Drizzle_rain.svg";
+import Clearskyvideo from "../public/Clear-sky.svg";
+import Mistvideo from "../public/Mist.svg";
+import Cloudyvideo from "../public/cloudy_video.svg";
+import snowvideo from "../public/snow_video.svg";
 import { Weatherbg } from "@/public/data";
+const tzlookup = require("tz-lookup");
+const timezone = require("timezone");
 const toSentenceCase = (str) => {
-  if (!str) return '';
+  if (!str) return "";
 
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
 const bg = {
-  heavyrain:heavyrain,
-  Drizzlerain:Drizzlerain,
-  Clearskyvideo:Clearskyvideo,
-  Mistvideo:Mistvideo,
-  Cloudyvideo:Cloudyvideo,
-  snowvideo:snowvideo,
-}
+  heavyrain: heavyrain,
+  Drizzlerain: Drizzlerain,
+  Clearskyvideo: Clearskyvideo,
+  Mistvideo: Mistvideo,
+  Cloudyvideo: Cloudyvideo,
+  snowvideo: snowvideo,
+};
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,40 +74,24 @@ export default function Home() {
     setLoading(true);
     getCurrentTime();
 
+     // Get timezone name
+     const tzName = tzlookup(lat, lon);
+
+    const formatTime = (time) => {
+      let hours = time.split(":")[0];
+      let minutes = time.split(":")[1];
+      let ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      return `${hours}:${minutes} ${ampm}`;
+    };
+
     try {
       const response = await axios.get(
         `${app_url}lat=${lat}&lon=${lon}&appid=${api_id}`
       );
       setWeather(response.data);
       setSearchInput(response.data.name);
-
-      /*// const sunriseTimestamp = response.data.sys.sunrise * 1000;
-      // const sunsetTimestamp = response.data.sys.sunset * 1000;
-      
-      // // Create Date objects from the timestamps
-      // const sunrise = new Date(sunriseTimestamp);
-      // const sunset = new Date(sunsetTimestamp);
-      
-      // // Get the current date and time in the system's timezone
-      // const currentDate = new Date();
-      // const systemTimezoneOffset = currentDate.getTimezoneOffset() / 60; // in hours
-      
-      // // Convert sunrise and sunset times to GMT
-      // const sunriseGMT = new Date(0, 0, 0, sunrise.getUTCHours(), sunrise.getUTCMinutes() - systemTimezoneOffset, 0);
-      // const sunsetGMT = new Date(0, 0, 0, sunset.getUTCHours(), sunset.getUTCMinutes() - systemTimezoneOffset, 0);
-      
-      // // Adjust times to the current location of the system
-      // const sunriseLocal = new Date(sunriseGMT.getTime() + (systemTimezoneOffset * 60 * 60 * 1000));
-      // const sunsetLocal = new Date(sunsetGMT.getTime() + (systemTimezoneOffset * 60 * 60 * 1000));
-      
-      // // Format the times as AM/PM
-      // const formatTime = (time) => `${time.getHours()}:${String(time.getMinutes()).padStart(2, '0')}`;
-      
-      // const sunriseTime = `${formatTime(sunriseLocal)} AM`;
-      // const sunsetTime = `${formatTime(sunsetLocal)} PM`;
-      
-      // console.log("Sunrise Time:", sunriseTime);
-      // console.log("Sunset Time:", sunsetTime);*/
 
       const sunrise = new Date(response.data.sys.sunrise * 1000);
       const sunset = new Date(response.data.sys.sunset * 1000);
@@ -114,7 +100,7 @@ export default function Home() {
       const hoursSet = sunset.getHours();
       const minutesSet = sunset.getMinutes();
       const sunriseTime = `${hours}:${minutes} AM`; //need to set the correct time for the sunrise and sunset
-      const sunSetTime = `${hoursSet}:${minutesSet} PM`;
+      const sunsetTime = `${hoursSet}:${minutesSet} PM`;
 
       const cityImageResponse = await axios.get(
         `${city_api_url}query=${response.data.name}&landmarks&orientation=landscape&client_id=${city_api_id}`
@@ -126,7 +112,7 @@ export default function Home() {
       );
       setSunriseSetaqi({
         sunrise: sunriseTime,
-        sunset: sunSetTime,
+        sunset: sunsetTime,
         aqi: AirqualityResponse.data.list[0].main.aqi,
       });
 
@@ -220,7 +206,7 @@ export default function Home() {
       });
       setWeeklyforecast(dateToWeatherIdMap);
     } catch (err) {
-      alert (toSentenceCase(err.response.data.message))
+      alert(toSentenceCase(err.response.data.message));
       console.log(err);
     }
   };
@@ -251,18 +237,20 @@ export default function Home() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          console.log(latitude, longitude);
+          
           getCurrentLocationWeather(latitude, longitude);
-          // clockIn({ latitude, longitude });
+          
         },
         (error) => {
           console.error("Error getting location:", error);
-          alert('Error getting location - Please turn on the location or Provide location access to the web browser')
+          alert(
+            "Error getting location - Please turn on the location or Provide location access to the web browser"
+          );
         },
         { timeout: 10000 }
       );
     } else {
-      alert('Geolocation is not available in this browser.')
+      alert("Geolocation is not available in this browser.");
       console.error("Geolocation is not available in this browser.");
     }
   }, []);
@@ -270,11 +258,15 @@ export default function Home() {
     <>
       <div className="inset-0 fixed h-screen w-screen -z-10">
         <Image
-        src = {bg[Weatherbg(
-            weather.weather !== undefined &&
-              weather.weather.length > 0 &&
-              weather.weather[0].id
-          )]}
+          src={
+            bg[
+              Weatherbg(
+                weather.weather !== undefined &&
+                  weather.weather.length > 0 &&
+                  weather.weather[0].id
+              )
+            ]
+          }
           height={0}
           width={0}
           // src={`/${Weatherbg(
@@ -327,7 +319,6 @@ export default function Home() {
                   key={index}
                   className="p-2  text-white/80 font-semibold text-backdrop-blur-xl rounded-3xl backdrop-blur-xl flex flex-col items-center justify-evenly bg-black/20"
                 >
-                
                   <h1>{weekdata.date}</h1>
                   <div className="h-14 w-14">
                     <WeatherSvg id={weekdata.id} />
@@ -351,7 +342,7 @@ export default function Home() {
                     width={80}
                     alt="aqiIcon"
                   />
-                  <div class name="flex flex col items-center">
+                  <div>
                     <p className="py-2 text-2xl font-normal">
                       AQI Index: {sunRiseSetaqi.aqi}
                     </p>
@@ -390,7 +381,7 @@ export default function Home() {
                       alt="sunriseIcon"
                     />
                   </div>
-                  <div class name="flex flex col items-center">
+                  <div>
                     <p className=" px-4 py-3 text-2xl font-normal">
                       {sunRiseSetaqi.sunrise}
                     </p>

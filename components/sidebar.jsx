@@ -37,7 +37,6 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
           {" "}
           <div className=" h-56 w-56">
             <WeatherSvg id={weather.weather[0].id}/>
-            
           </div>
           <div className="flex flex-col gap-1 items-center">
             <div className="flex items-center text-6xl text-cyan-100">
