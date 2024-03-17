@@ -3,9 +3,10 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   return (
     <Html lang="en">
-      <Head />
-      <title>Weather-Forecast-Application</title>
-          <link rel="icon" href="/weatherIcon.ico" />
+      <Head>
+        <title>Weather-Forecast-Application</title>
+          <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body>
         <Main />
         <NextScript />
