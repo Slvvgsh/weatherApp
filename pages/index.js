@@ -271,8 +271,8 @@ export default function Home() {
           className="h-full w-full"
         />
       </div>
-      <div className="w-screen flex xl:flex-row flex-col gap-4 p-4 h-screen">
-        <div className="xl:w-[37.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
+      <div className="w-screen flex xl:flex-row flex-col gap-2 p-4 h-screen">
+        <div className="xl:w-[35.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
           <SideBar
             getCurrentWeatherOnSearch={getCurrentWeatherOnSearch}
             weather={weather}

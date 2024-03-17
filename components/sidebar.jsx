@@ -35,11 +35,11 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
         </form>
         {!loading && (<div className="w-full flex sm:flex-row flex-col justify-between sm:justify-center items-center">
           {" "}
-          <div className=" h-56 w-56">
+          <div className=" h-36 w-36">
             <WeatherSvg id={weather.weather[0].id}/>
           </div>
-          <div className="flex flex-col gap-1 items-center">
-            <div className="flex items-center text-6xl text-cyan-100">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center text-3xl text-cyan-100">
               <h1 className="text-9xl">{weather.main.temp.toFixed(0)}</h1>&deg;
               <span className="text-6xl text-start">C</span>
               <div className="sm:flex hidden justify-between w-fit px-12 py-1 gap-16 items-center"></div>
@@ -59,8 +59,8 @@ export default function SideBar({getCurrentWeatherOnSearch,weather,City_Image,se
               className="mix-blend-overlay w-full rounded-lg h-[295px]"
               src={City_Image.urls.full}
               alt="icon"
-              height="500"
-              width="500"
+              height="300"
+              width="300"
             />
             <h3 className="text-3xl absolute bottom-0 right-0 p-4 text-gray-300">
               {weather.name} {weather.sys.country}
