@@ -4,6 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
+      <title>Weather-Forecast-Application</title>
+          <link rel="icon" href="/favicon.ico" />
       <body>
         <Main />
         <NextScript />

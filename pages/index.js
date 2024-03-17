@@ -74,8 +74,7 @@ export default function Home() {
     setLoading(true);
     getCurrentTime();
 
-     // Get timezone name
-     const tzName = tzlookup(lat, lon);
+    const tzName = tzlookup(lat, lon);
 
     const formatTime = (time) => {
       let hours = time.split(":")[0];
@@ -99,7 +98,7 @@ export default function Home() {
       const minutes = sunrise.getMinutes();
       const hoursSet = sunset.getHours();
       const minutesSet = sunset.getMinutes();
-      const sunriseTime = `${hours}:${minutes} AM`; //need to set the correct time for the sunrise and sunset
+      const sunriseTime = `${hours}:${minutes} AM`;
       const sunsetTime = `${hoursSet}:${minutesSet} PM`;
 
       const cityImageResponse = await axios.get(
@@ -226,9 +225,9 @@ export default function Home() {
 
     const intervalId = setInterval(() => {
       getCurrentTime();
-    }, 1000); // Fetch time every second
+    }, 1000);
 
-    // Clear the interval on component unmount
+    
     return () => clearInterval(intervalId);
   }, [api_id, app_url, city_api_id, city_api_url]);
 
@@ -237,9 +236,8 @@ export default function Home() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          
+
           getCurrentLocationWeather(latitude, longitude);
-          
         },
         (error) => {
           console.error("Error getting location:", error);
@@ -269,33 +267,10 @@ export default function Home() {
           }
           height={0}
           width={0}
-          // src={`/${Weatherbg(
-          //   weather.weather !== undefined &&
-          //     weather.weather.length > 0 &&
-          //     weather.weather[0].id
-          // )}`}
           alt="bg"
           className="h-full w-full"
         />
-        {/* <Image
-          src={`/${Weatherbg(
-            weather.weather !== undefined &&
-              weather.weather.length > 0 &&
-              weather.weather[0].id
-          )}`}
-          alt="bg"
-          height={1090}
-          width={1090}
-        /> */}
       </div>
-      {/* <div
-        className={`w-screen flex gap-4 p-4 h-screen bg-[url(/${Weatherbg(
-          weather.weather !== undefined &&
-            weather.weather.length > 0 &&
-            weather.weather[0].id
-        )})] bg-cover bg-no-repeat`}
-      > */}
-      <div></div>
       <div className="w-screen flex xl:flex-row flex-col gap-4 p-4 h-screen">
         <div className="xl:w-[37.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
           <SideBar
