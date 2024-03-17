@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <title>Weather-Forecast-Application</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/weatherIcon.ico" />
       <body>
         <Main />
         <NextScript />
