@@ -1,7 +1,6 @@
 /*@type {import('next').NextConfig}*/ 
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: "/weatherApp",
   output:'export',
   images:{
     unoptimized: true,
