@@ -155,10 +155,20 @@ export default function Home() {
       const sunriseTime = `${hours}:${minutes} AM`; //need to set the correct time for the sunrise and sunset
       const sunSetTime = `${hoursSet}:${minutesSet} PM`;
 
-      const cityImageResponse = await axios.get(
-        `${city_api_url}query=${searchInput}&landmarks&orientation=landscape&client_id=${city_api_id}`
-      );
-      setCity_Image(cityImageResponse.data);
+      try {
+        const cityImageResponse = await axios.get(
+          `${city_api_url}query=${searchInput}&landmarks&orientation=landscape&client_id=${city_api_id}`
+        );
+        setCity_Image(cityImageResponse.data);
+        
+      } catch (error) {
+        
+        console.error('Error occurred while fetching city image:', error);
+        
+        const randomImageResponse = await axios.get(`${city_api_url}query=landscape&landmarks&orientation=landscape&client_id=${city_api_id}`);
+        setCity_Image(randomImageResponse.data);
+      }
+
       setLoading(false);
       const AirqualityResponse = await axios.get(
         `${Air_quality_url}lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${api_id}`
@@ -196,7 +206,7 @@ export default function Home() {
       });
       setWeeklyforecast(dateToWeatherIdMap);
     } catch (err) {
-      alert(toSentenceCase(err.response.data.message));
+      alert(" " + "Ensure that the location details are valid: " + toSentenceCase( err.response.data.message + " "));
       console.log(err);
     }
   };
