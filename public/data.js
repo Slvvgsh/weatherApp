@@ -1,5 +1,4 @@
-import Image from "next/image";
-import next from "./clear-day.svg";
+
 import {
   Thunderstorm,
   Drizzle_rain,

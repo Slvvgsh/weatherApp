@@ -76,15 +76,6 @@ export default function Home() {
 
     const tzName = tzlookup(lat, lon);
 
-    const formatTime = (time) => {
-      let hours = time.split(":")[0];
-      let minutes = time.split(":")[1];
-      let ampm = hours >= 12 ? "PM" : "AM";
-      hours = hours % 12;
-      hours = hours ? hours : 12;
-      return `${hours}:${minutes} ${ampm}`;
-    };
-
     try {
       const response = await axios.get(
         `${app_url}lat=${lat}&lon=${lon}&appid=${api_id}`
@@ -271,7 +262,7 @@ export default function Home() {
           className="h-full w-full"
         />
       </div>
-      <div className="w-screen flex xl:flex-row flex-col gap-2 p-4 h-screen">
+      <div className="w-screen flex xl:flex-row flex-col gap-6 p-4 h-screen">
         <div className="xl:w-[35.5%] w-full rounded-3xl backdrop-blur-xl bg-black/30">
           <SideBar
             getCurrentWeatherOnSearch={getCurrentWeatherOnSearch}
